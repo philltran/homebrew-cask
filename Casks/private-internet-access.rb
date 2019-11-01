@@ -1,10 +1,14 @@
 cask 'private-internet-access' do
-  version '78'
-  sha256 '467927fb7cbcccf6f3d8f27b4e98c13c7f15b977c585a336d33347d7a95e5c2d'
+  version '1.5.1-03605'
+  sha256 'd2ca894660fc7ae012ddc14dd7720d46e20dca05445a58e1d446b29dfd9ceac8'
 
-  url "https://installers.privateinternetaccess.com/download/pia-v#{version}-installer-mac.dmg"
+  url "https://installers.privateinternetaccess.com/download/pia-macos-#{version}.zip"
+  appcast 'https://www.privateinternetaccess.com/pages/download'
   name 'Private Internet Access'
   homepage 'https://www.privateinternetaccess.com/'
+
+  auto_updates true
+  depends_on macos: '>= :sierra'
 
   installer manual: 'Private Internet Access Installer.app'
 

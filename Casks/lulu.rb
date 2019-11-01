@@ -1,33 +1,32 @@
 cask 'lulu' do
-  version '0.9.3'
-  sha256 '6309a469e3620cd4a3934ae0e417be7d8d3f9b6fe9f363561c01235ae57c9486'
+  version '1.2.1'
+  sha256 'a51b73c1fc3e4e11bbccffed0d1d70b4fc06a6f4774af06b254f8a82c0e4c1d5'
 
-  # github.com/objective-see/LuLu was verified as official when first introduced to the cask
-  url "https://github.com/objective-see/LuLu/releases/download/#{version}/LuLu_#{version.dots_to_underscores}.zip"
-  appcast 'https://github.com/objective-see/LuLu/releases.atom',
-          checkpoint: '4e2de04ea705b61437a010ac87cace16459a6d3fed55148a01f62148d64f9a19'
+  # bitbucket.org/objective-see was verified as official when first introduced to the cask
+  url "https://bitbucket.org/objective-see/deploy/downloads/LuLu_#{version}.zip"
+  appcast 'https://objective-see.com/products/changelogs/LuLu.txt'
   name 'LuLu'
   homepage 'https://objective-see.com/products/lulu.html'
 
-  depends_on macos: '>= :yosemite'
+  depends_on macos: '>= :sierra'
 
   installer script: {
-                      executable: "#{staged_path}/Lulu Installer.app/Contents/Resources/configure.sh",
+                      executable: "#{staged_path}/Lulu Installer.app/Contents/MacOS/LuLu Installer",
                       args:       ['-install'],
                       sudo:       true,
                     }
 
   uninstall script: {
-                      executable: "#{staged_path}/Lulu Installer.app/Contents/Resources/configure.sh",
+                      executable: "#{staged_path}/Lulu Installer.app/Contents/MacOS/LuLu Installer",
                       args:       ['-uninstall'],
                       sudo:       true,
                     }
 
   zap trash: [
                '~/Library/Caches/com.objective-see.lulu',
-               '~/Library/Caches/com.objective-see.luluHelper',
+               '~/Library/Caches/com.objective-see.lulu.helper',
                '~/Library/Preferences/com.objective-see.lulu.plist',
-               '~/Library/Preferences/com.objective-see.luluHelper.plist',
+               '~/Library/Preferences/com.objective-see.lulu.helper.plist',
                '/Library/LaunchDaemons/com.objective-see.lulu.plist',
                '/Library/Logs/LuLu.log',
              ]

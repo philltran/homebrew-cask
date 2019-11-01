@@ -1,13 +1,12 @@
 cask 'youku' do
-  version '1.3.5.01166'
-  sha256 '5d9f2f546261e402468d0ba9b984c9060010cc0de1f6c94a549058eec6bcac1d'
+  version '1.7.7.10212'
+  sha256 '4aa0bfa853f1d04000583feaa6e6004349ca7c9e85ccadbb59a8807ee3c05d6e'
 
-  url "http://pcclient.download.youku.com/ikumac/youkumac_#{version}.dmg"
+  url "https://pcclient.download.youku.com/ikumac/youkumac_#{version}.dmg"
+  appcast 'https://pd.youku.com/pc'
   name 'Youku'
   name '优酷'
   homepage 'https://pd.youku.com/pc'
-
-  depends_on macos: '>= :mavericks'
 
   app '优酷.app'
 

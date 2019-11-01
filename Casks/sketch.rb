@@ -1,14 +1,14 @@
 cask 'sketch' do
-  version '49.2-51160'
-  sha256 '4e28e81e3366484aebfe4fc3e5436b76c3c34ce30002b47e0da1c66d602732b6'
+  version '59.1-86144'
+  sha256 '1c08a787017296f7e378341a5eaef6635dfaa3d4fe7673e3f8e35b28d6d1227b'
 
   url "https://download.sketchapp.com/sketch-#{version}.zip"
-  appcast 'https://download.sketchapp.com/sketch-versions.xml',
-          checkpoint: '33fcaa022c63c3b37f5ba3d6018d71b4b3f5e4c810713f19cc16148940bc4eb6'
+  appcast 'https://download.sketchapp.com/sketch-versions.xml'
   name 'Sketch'
   homepage 'https://www.sketchapp.com/'
 
   auto_updates true
+  depends_on macos: '>= :high_sierra'
 
   app 'Sketch.app'
 

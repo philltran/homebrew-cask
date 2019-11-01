@@ -1,14 +1,15 @@
 cask 'unity-windows-support-for-editor' do
-  version '2017.3.1f1,fc1d3344e6ea'
-  sha256 '85f547669e927f108aeda1124f3eac7ace968cb3ac1017d38f61375a4b5e0a87'
+  version '2019.2.10f1,923acd2d43aa'
+  sha256 '3b6a0a5dbdfb98aa4368d68be4d3317e2c6457247d5ced227f1c581983caca28'
 
-  url "https://netstorage.unity3d.com/unity/#{version.after_comma}/MacEditorTargetInstaller/UnitySetup-Windows-Support-for-Editor-#{version.before_comma}.pkg"
-  name 'Unity Windows Build Support'
+  url "https://netstorage.unity3d.com/unity/#{version.after_comma}/MacEditorTargetInstaller/UnitySetup-Windows-Mono-Support-for-Editor-#{version.before_comma}.pkg"
+  appcast 'https://public-cdn.cloud.unity3d.com/hub/prod/releases-darwin.json'
+  name 'Unity Windows (Mono) Build Support'
   homepage 'https://unity3d.com/unity/'
 
   depends_on cask: 'unity'
 
-  pkg "UnitySetup-Windows-Support-for-Editor-#{version.before_comma}.pkg"
+  pkg "UnitySetup-Windows-Mono-Support-for-Editor-#{version.before_comma}.pkg"
 
   uninstall pkgutil: 'com.unity3d.WindowsStandaloneSupport'
 end

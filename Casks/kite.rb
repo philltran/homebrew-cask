@@ -1,11 +1,10 @@
 cask 'kite' do
-  version '0.20180322.0'
-  sha256 '3f05e9c5da1bac0f4920f228fdd37fb834af425a58b08616b2676c459dc7d430'
+  version '0.20191029.0'
+  sha256 'd504510207d3a0cc885142ebf415e54db991ff6de194547c97fafd14eaabe214'
 
-  # s3-us-west-1.amazonaws.com/kite-downloads was verified as official when first introduced to the cask
-  url "https://s3-us-west-1.amazonaws.com/kite-downloads/Kite-#{version}.dmg"
-  appcast 'https://release.kite.com/appcast.xml',
-          checkpoint: 'e957c86f6616fa1f359d7287a37d2942b679215ae5dde2115749950a4c08bc68'
+  # kite-downloads.s3.amazonaws.com was verified as official when first introduced to the cask
+  url "https://kite-downloads.s3.amazonaws.com/Kite-#{version}.dmg"
+  appcast 'https://release.kite.com/appcast.xml'
   name 'Kite'
   homepage 'https://kite.com/'
 

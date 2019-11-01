@@ -1,13 +1,24 @@
 cask 'musescore' do
-  version '2.2'
-  sha256 '92f365f1b2129cfe0ee0537f4f6074a529107821167650eafe472044d4f2bac1'
+  version '3.3.0'
+  sha256 '227325d1bac5ec6cf2256fbe29fd731a7b874de252c48d11ac41c9337a23e445'
 
-  # ftp.osuosl.org/pub/musescore was verified as official when first introduced to the cask
-  url "https://ftp.osuosl.org/pub/musescore/releases/MuseScore-#{version.major_minor_patch}/MuseScore-#{version}.dmg"
+  # github.com/musescore/MuseScore was verified as official when first introduced to the cask
+  url "https://github.com/musescore/MuseScore/releases/download/v#{version.major_minor}/MuseScore-#{version}.dmg"
+  appcast 'https://github.com/musescore/MuseScore/releases.atom'
   name 'MuseScore'
   homepage 'https://musescore.org/'
 
-  depends_on macos: '>= :lion'
+  depends_on macos: '>= :sierra'
 
-  app "MuseScore #{version.major}.app"
+  app "MuseScore #{version.major_minor}.app"
+  # shim script (https://github.com/caskroom/homebrew-cask/issues/18809)
+  shimscript = "#{staged_path}/mscore.wrapper.sh"
+  binary shimscript, target: 'mscore'
+
+  preflight do
+    IO.write shimscript, <<~EOS
+      #!/bin/sh
+      exec '#{appdir}/MuseScore #{version.major_minor}.app/Contents/MacOS/mscore' "$@"
+    EOS
+  end
 end

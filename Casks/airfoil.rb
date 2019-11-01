@@ -1,25 +1,23 @@
 cask 'airfoil' do
-  version '5.7.1'
-  sha256 '214b4db66eceaa87058dee06a20c2d17463b220cd659fbbb5bb0a36c4e62e768'
+  version '5.8.7'
+  sha256 '0c06b0a9bc450c00c168b622085df88d83fe38f55dc0af1afa2136d3d7bb6dc1'
 
   url 'https://rogueamoeba.com/airfoil/download/Airfoil.zip'
-  appcast 'https://rogueamoeba.net/ping/versionCheck.cgi?format=sparkle&bundleid=com.rogueamoeba.Airfoil&platform=osx',
-          checkpoint: '61787f06d6e1f05bf67332d6e5773f06774417786dc28901727b8860286a7236'
+  appcast 'https://rogueamoeba.net/ping/versionCheck.cgi?format=sparkle&bundleid=com.rogueamoeba.Airfoil&platform=osx'
   name 'Airfoil'
   homepage 'https://www.rogueamoeba.com/airfoil/mac/'
 
   auto_updates true
-  depends_on macos: '>= :mavericks'
+  depends_on macos: '>= :sierra'
 
   app 'Airfoil/Airfoil Satellite.app'
   app 'Airfoil/Airfoil.app'
 
-  uninstall delete:     '/Library/Audio/Plug-Ins/HAL/InstantOn.driver',
-            login_item: 'Airfoil Satellite',
-            quit:       [
-                          'com.rogueamoeba.Airfoil',
-                          'com.rogueamoeba.AirfoilSpeakers',
-                        ]
+  uninstall delete: '/Library/Audio/Plug-Ins/HAL/InstantOn.driver',
+            quit:   [
+                      'com.rogueamoeba.Airfoil',
+                      'com.rogueamoeba.AirfoilSpeakers',
+                    ]
 
   zap trash: [
                '~/Library/Application Support/Airfoil',
